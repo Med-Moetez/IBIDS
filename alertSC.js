@@ -74,63 +74,63 @@ async function sendAlert() {
 sendAlert();
 
 // // Example usage: call the getAlertsCount function
-// contractInstance.methods
-//   .getAlertsCount()
-//   .call()
-//   .then((count) => {
-//     console.log("Total number of alerts:", count);
-//   })
-//   .catch((error) => {
-//     console.error("Error getting alerts count:", error);
-//   });
+contractInstance.methods
+  .getAlertsCount()
+  .call()
+  .then((count) => {
+    console.log("Total number of alerts:", count);
+  })
+  .catch((error) => {
+    console.error("Error getting alerts count:", error);
+  });
 
 // // Example usage: call the getAlert function
-// const alertIndex = 0; // Index of the alert to retrieve
-// contractInstance.methods
-//   .getAlert(alertIndex)
-//   .call()
-//   .then((alert) => {
-//     console.log("Alert at index", alertIndex, ":", alert);
-//   })
-//   .catch((error) => {
-//     console.error("Error getting alert at index", alertIndex, ":", error);
-//   });
+const alertIndex = 0; // Index of the alert to retrieve
+contractInstance.methods
+  .getAlert(alertIndex)
+  .call()
+  .then((alert) => {
+    console.log("Alert at index", alertIndex, ":", alert);
+  })
+  .catch((error) => {
+    console.error("Error getting alert at index", alertIndex, ":", error);
+  });
 
 // Example usage: call the getAllAlerts function
-// contractInstance.methods
-//   .getAllAlerts()
-//   .call()
-//   .then((allAlerts) => {
-//     console.log("All alerts:", allAlerts);
-//   })
-//   .catch((error) => {
-//     console.error("Error getting all alerts:", error);
-//   });
+contractInstance.methods
+  .getAllAlerts()
+  .call()
+  .then((allAlerts) => {
+    console.log("All alerts:", allAlerts);
+  })
+  .catch((error) => {
+    console.error("Error getting all alerts:", error);
+  });
 
 // event to handle listening to add alerts
-// const run = async () => {
-//   contractInstanceSocket.events
-//     .AlertAdded({ fromBlock: "latest" })
-//     // .AlertAdded({ fromBlock: 0 })
-//     .on("data", (event) => console.log(event));
-// };
+const run = async () => {
+  contractInstanceSocket.events
+    .AlertAdded({ fromBlock: "latest" })
+    // .AlertAdded({ fromBlock: 0 })
+    .on("data", (event) => console.log(event));
+};
 
-// run().then(() => {
-//   console.log("listening...");
-// });
+run().then(() => {
+  console.log("listening...");
+});
 
 // get passed alert Events
-// contractInstanceSocket
-//   .getPastEvents(
-//     "AlertAdded",
-//     {
-//       fromBlock: 0,
-//       toBlock: "latest",
-//     },
-//     function (error, events) {
-//       console.log(events);
-//     }
-//   )
-//   .then(function (events) {
-//     console.log(events); // same results as the optional callback above
-//   });
+contractInstanceSocket
+  .getPastEvents(
+    "AlertAdded",
+    {
+      fromBlock: 0,
+      toBlock: "latest",
+    },
+    function (error, events) {
+      console.log(events);
+    }
+  )
+  .then(function (events) {
+    console.log(events); // same results as the optional callback above
+  });
